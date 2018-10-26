@@ -1,20 +1,29 @@
 import React from 'react';
-import { AsyncStorage, Button, View, StyleSheet } from 'react-native';
+import { AsyncStorage, Image, Text, Button, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-class FunctionEarth extends React.Component {
+class FunctionEarthHome extends React.Component {
   static navigationOptions = {
     title: 'My Function Earth',
   };
   componentDidUpdate() {
     if (!this.props.loggedIn || this.props.error) {
-      console.log('error', this.props.loggedIn)
       this.props.navigation.navigate('Auth');
     }
   }
+  
   render() {
+    const loadAuthToken = () => {
+      return AsyncStorage.getItem('authToken');
+    };
+    console.log('AUTH',loadAuthToken())
     return (
       <View style={styles.container}>
+        <View style={styles.loginLogoContainer}>
+          <Image source={require('./../src/assets/images/function-earth-logo.png')} 
+            style={{width: 200, height: 200}} />
+          <Text style={styles.loginTitle}>Function Earth</Text>
+        </View>
         <Button title="Show me more of the app" onPress={this._showMoreApp} />
         <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
       </View>
@@ -33,14 +42,15 @@ class FunctionEarth extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null,
-  error: state.auth.error
+  error: state.auth.error,
+  authState: state.auth
 });
 
-export default connect(mapStateToProps)(FunctionEarth);
+export default connect(mapStateToProps)(FunctionEarthHome);

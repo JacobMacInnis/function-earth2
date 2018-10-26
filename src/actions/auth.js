@@ -59,7 +59,6 @@ export const login = (username, password) => dispatch => {
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
             .then(({authToken}) => {
-              console.log('Successfully Logged in', authToken);
               return storeAuthInfo(authToken, dispatch)
             })
             .catch(err => {

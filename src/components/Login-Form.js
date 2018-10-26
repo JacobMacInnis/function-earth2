@@ -18,10 +18,6 @@ export class LoginForm extends React.Component {
         </View>
       );
     }
-    if (this.props.loginError) {
-      console.log(this.props.loginError.message)
-    }
-    
     return (
       <View title="login-form">
         {error}

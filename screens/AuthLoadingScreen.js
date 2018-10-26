@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, StatusBar, StyleSheet, ActivityIndicator, AsyncStorage } from 'react-native';
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 // Import Screens
-import FunctionEarth from './FunctionEarth';
+import FunctionEarthHome from './FunctionEarthHome';
 import LoginScreen from './LoginScreen';
 import RegistrationScreen from './RegistrationScreen';
 import UserCreation from './UserCreation';
@@ -11,21 +12,13 @@ import OtherScreen from './OtherScreen';
 
 
 class AuthLoadingScreen extends React.Component {
-  constructor() {
-    super();
-    this._bootstrapAsync();
+  componentDidMount() {
+    if (this.props.loggedIn) {
+      this.props.navigation.navigate('App');
+    } else {
+      this.props.navigation.navigate('Auth');
+    }
   }
-
-
-  // Fetch the token from storage then navigate to our appropriate place
-  _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem('authToken');
-    console.log(userToken)
-    // This will switch to the App screen or Auth screen and this loading
-    // screen will be unmounted and thrown away.
-    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
-  };
-
   // Render any loading content that you like here
   render() {
     return (
@@ -37,6 +30,11 @@ class AuthLoadingScreen extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -45,12 +43,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppStack = createStackNavigator({ Home: FunctionEarth, Other: OtherScreen });
+const AppStack = createStackNavigator({ Home: FunctionEarthHome, Other: OtherScreen });
 
 const AuthStack = createStackNavigator({ Login: LoginScreen, Registration: RegistrationScreen, UserCreation: UserCreation });
 
 
-export default createSwitchNavigator(
+export default connect(mapStateToProps)(createSwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
     App: AppStack,
@@ -59,4 +57,4 @@ export default createSwitchNavigator(
   {
     initialRouteName: 'AuthLoading',
   }
-);
+));
