@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, Button, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { clearAuth } from '../../store/actions/auth';
-import { clearAuthToken } from '../../async-storage';
+// Import Actions
+import { clearAuth } from '../actions/auth';
+// Import Async-Storage Function
+import { clearAuthToken } from '../async-storage';
 
 export class HeaderBar extends React.Component {
   logOut() {
@@ -23,7 +25,7 @@ export class HeaderBar extends React.Component {
     }
     return (
       <View title="header-bar">
-        <Image source={require('../../assets/images/function-earth-logo.png')} 
+        <Image source={require('../assets/images/function-earth-logo.png')} 
             style={{width: 200, height: 200}} />
         <Text title='title'>Function Earth</Text>
         {logOutButton}

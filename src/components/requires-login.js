@@ -1,12 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 export default () => Component => {
   
   function RequiresLogin(props) {
     
-      const {authenticating, loggedIn, error, ...passThroughProps} = props;
+      const { authenticating, loggedIn, error, ...passThroughProps } = props;
       if (authenticating) {
           return <View>Logging in...</View>;
       } else if (!loggedIn || error) {

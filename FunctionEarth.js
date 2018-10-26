@@ -2,37 +2,33 @@ import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation'; 
-import { login } from './src/store/actions/auth';
 
-import Registration from './src/components/Registration/Registration';
-import MyFunctionEarth from './src/components/MyFunctionEarth/MyFunctionEarth';
-
-import Login from './src/components/Login/Login';
+// Components
+import Registration from './src/components/Registration';
+import MyFunctionEarth from './src/components/MyFunctionEarth';
+import Login from './src/components/Login';
 
 class HomeScreen extends React.Component {
-  onSubmitLogin(values) {
-    const {username, password} = values;
-    console.log('Im trying', username, password);
-    this.props.dispatch(login(username, password))
-      .then(() => {
-        if (this.props.loggedIn) {
-          console.log('logged in now time to navigate')
-        return navigation.navigate('MyFunctionEarth')
-        };
-      }); 
-  };
+  userLoggedIn() {
+    console.log('Im trying')
+    return () => this.props.navigation.navigate('MyFunctionEarth');
+  }
   render() {
-    console.log('This.props', this.props)
+    
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text>Login.js</Text>
-          <Login onSubmit={(values) => this.onSubmitLogin(values)}/>
+          <Login userLoggedIn={this.userLoggedIn} />
         </View>
         <Button
           title="Registration"
           onPress={() => this.props.navigation.navigate('Registration')}
+        />
+        <Button
+          title="MyFunctionEarth"
+          onPress={() => this.props.navigation.navigate('MyFunctionEarth')}
         />
       </View>
     );
@@ -41,15 +37,9 @@ class HomeScreen extends React.Component {
 
 const RootStack = createStackNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-    },
-    Registration: {
-      screen: Registration,
-    },
-    MyFunctionEarth: {
-      screen: MyFunctionEarth
-    }
+    Home: HomeScreen, // loginScreen
+    Registration: Registration,
+    MyFunctionEarth: MyFunctionEarth
   },
   {
     initialRouteName: 'Home',

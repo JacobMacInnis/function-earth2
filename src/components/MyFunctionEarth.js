@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import HeaderBar from '../Header-Bar/Header-Bar';
-import requiresLogin from '../requires-login.js'
+
+// Import Components
+import HeaderBar from './Header-Bar';
+import requiresLogin from './requires-login'
 
 class MyFunctionEarth extends React.Component {
   

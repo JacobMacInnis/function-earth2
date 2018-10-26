@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { Field, reduxForm, focus } from 'redux-form';
-import Input from '../Input/Input';
-import { required, nonEmpty, matches, length, isTrimmed } from '../../validators';
 
-import styles from './registration-form.styles';
+// Import Components
+import Input from './Input';
+
+// Import Validation functions
+import { required, nonEmpty, matches, length, isTrimmed } from './../validators';
 
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
@@ -12,12 +14,19 @@ const matchesPassword = matches('password');
 export class RegistrationForm extends React.Component {
     render() {
       return (
-        <View style={styles.container}>
+        <View>
           <Text style={{ fontWeight: 'bold', marginTop: 20 }}>First Name</Text>
           <Field 
-            component={Input} 
-            name="firstName" 
-            placeholder={'Name'}/>
+              component={Input} 
+              name="firstName" 
+              placeholder={'Name'}/>
+          <Text style={{ fontWeight: 'bold', marginTop: 20 }}>city, state or zipcode</Text>
+          <Field
+              component={Input}
+              name="location"
+              validate={[required, nonEmpty]}
+              placeholder={'city, state or zipcode'}
+          />
           <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Username</Text>
           <Field
               component={Input}
@@ -51,6 +60,19 @@ export class RegistrationForm extends React.Component {
       );
     }
 }
+
+const styles = StyleSheet.create({
+  // container: {
+  //   padding: 45
+  // },
+  // formSubmit: {
+  //   alignSelf: 'center',
+  //   fontWeight: 'bold',
+  //   fontSize: 15,
+  //   marginTop: 25,
+  //   padding: 5
+  // },
+});
 
 export default reduxForm({
     form: 'registration',

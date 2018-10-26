@@ -22,6 +22,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "react-country-region-selector": "^1.4.1",
     "remote-redux-devtools": "^0.5.13"
   }
 }
