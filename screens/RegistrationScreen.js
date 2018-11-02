@@ -80,25 +80,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  loginTitle: {
-    marginTop: 5,
-    fontSize: 40,
-    fontWeight: 'bold',
-  },
-  registrationText: {
-    justifyContent: 'flex-end',
-    textAlign: 'center',
-    fontSize: 25,
-    margin: 10,
-  },
-  registrationForm: {
-    flex: 8,
-  },
-  backButton: {
-    flex: 1,
-    justifyContent: 'center',
-    marginBottom: 25,
-  }
+  // loginTitle: {
+  //   marginTop: 5,
+  //   fontSize: 40,
+  //   fontWeight: 'bold',
+  // },
+  // registrationText: {
+  //   justifyContent: 'flex-end',
+  //   textAlign: 'center',
+  //   fontSize: 25,
+  //   margin: 10,
+  // },
+  // registrationForm: {
+  //   flex: 8,
+  // },
+  // backButton: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   marginBottom: 25,
+  // }
 });
 
 export default connect(mapStateToProps)(Registration);

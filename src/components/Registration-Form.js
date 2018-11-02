@@ -15,41 +15,72 @@ export class RegistrationForm extends React.Component {
     render() {
       return (
         <View>
-          <Text style={{ fontWeight: 'bold', marginTop: 20 }}>First Name</Text>
-          <Field 
-              component={Input} 
-              name="firstName" 
-              placeholder={'Name'}/>
-          <Text style={{ fontWeight: 'bold', marginTop: 20 }}>city, state or zipcode</Text>
-          <Field
-              component={Input}
-              name="location"
-              validate={[required, nonEmpty]}
-              placeholder={'city, state or zipcode'}
-          />
-          <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Username</Text>
-          <Field
-              component={Input}
-              name="username"
-              validate={[required, nonEmpty, isTrimmed]}
-              placeholder={'username'}
-          />
-          <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Password</Text>
-          <Field
-              component={Input}
-              name="password"
-              validate={[required, passwordLength, isTrimmed]}
-              placeholder={'password'}
-              secureTextEntry={true}
-          />
-          <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Confirm Password</Text>
-          <Field
-              component={Input}
-              name="passwordConfirm"
-              validate={[required, nonEmpty, matchesPassword]}
-              placeholder={'password'}
-              secureTextEntry={true}
-          />
+            <View style={{ display: 'flex', displayDirection: 'row',  backgroundColor: 'black'}}>
+                <View style={{ flex: 1, backgroundColor: 'red'}}>
+                    <Text style={{ fontWeight: 'bold'}}>First Name</Text>
+                </View>
+                <View style={{ flex: 1, backgroundColor: 'tan' }}>
+                    <Field 
+                        component={Input} 
+                        name="firstName" 
+                        placeholder={'Name'}
+                        />
+                </View>
+            </View>
+            <View>
+                <View style={{ backgroundColor: 'transparent' }}>
+                    <Text style={{ fontWeight: 'bold', marginTop: 20 }}>city, state or zipcode</Text>
+                </View>
+                <View style={{ backgroundColor: 'transparent' }}>
+                    <Field
+                        component={Input}
+                        name="location"
+                        validate={[required, nonEmpty]}
+                        placeholder={'city, state or zipcode'}
+                    />
+                </View>
+            </View>
+            <View>
+                <View style={{ backgroundColor: 'aqua'}}>
+                    <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Username</Text>
+                </View>
+                <View style={{ backgroundColor: 'green' }}>
+                    <Field
+                        component={Input}
+                        name="username"
+                        validate={[required, nonEmpty, isTrimmed]}
+                        placeholder={'username'}
+                    />
+                </View >
+            </View>
+            <View style={{ backgroundColor: 'teal' }}>
+                <View>
+                    <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Password</Text>
+                </View>
+                <View style={{ backgroundColor: 'magenta' }}>
+                    <Field
+                        component={Input}
+                        name="password"
+                        validate={[required, passwordLength, isTrimmed]}
+                        placeholder={'password'}
+                        secureTextEntry={true}
+                    />
+                </View>
+            </View>
+            <View>
+                <View style={{ backgroundColor: 'grey' }}>
+                    <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Confirm Password</Text>
+                </View>
+                <View style={{ backgroundColor: 'brown' }}>
+                    <Field
+                        component={Input}
+                        name="passwordConfirm"
+                        validate={[required, nonEmpty, matchesPassword]}
+                        placeholder={'password'}
+                        secureTextEntry={true}
+                    />
+                </View>
+            </View>
           <Button
               title='Register'
               onPress={this.props.handleSubmit}
