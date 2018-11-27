@@ -20,7 +20,7 @@ class Registration extends React.Component {
       .then(() => this.props.dispatch(login(username, password)))
       .then(() => {
         if (this.props.loggedIn) {
-        this.props.navigation.navigate('UserCreation')
+        this.props.navigation.navigate('UserCreation');
         // this.props.navigation.navigate('App')
         }
       })  

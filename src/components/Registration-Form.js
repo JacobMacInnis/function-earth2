@@ -15,11 +15,11 @@ export class RegistrationForm extends React.Component {
     render() {
       return (
         <View>
-            <View style={{ display: 'flex', displayDirection: 'row',  backgroundColor: 'black'}}>
-                <View style={{ flex: 1, backgroundColor: 'red'}}>
+            <View>
+                <View>
                     <Text style={{ fontWeight: 'bold'}}>First Name</Text>
                 </View>
-                <View style={{ flex: 1, backgroundColor: 'tan' }}>
+                <View>
                     <Field 
                         component={Input} 
                         name="firstName" 
@@ -28,7 +28,7 @@ export class RegistrationForm extends React.Component {
                 </View>
             </View>
             <View>
-                <View style={{ backgroundColor: 'transparent' }}>
+                <View>
                     <Text style={{ fontWeight: 'bold', marginTop: 20 }}>city, state or zipcode</Text>
                 </View>
                 <View style={{ backgroundColor: 'transparent' }}>
@@ -41,10 +41,10 @@ export class RegistrationForm extends React.Component {
                 </View>
             </View>
             <View>
-                <View style={{ backgroundColor: 'aqua'}}>
+                <View>
                     <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Username</Text>
                 </View>
-                <View style={{ backgroundColor: 'green' }}>
+                <View>
                     <Field
                         component={Input}
                         name="username"
@@ -53,11 +53,11 @@ export class RegistrationForm extends React.Component {
                     />
                 </View >
             </View>
-            <View style={{ backgroundColor: 'teal' }}>
+            <View>
                 <View>
                     <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Password</Text>
                 </View>
-                <View style={{ backgroundColor: 'magenta' }}>
+                <View>
                     <Field
                         component={Input}
                         name="password"
@@ -68,10 +68,10 @@ export class RegistrationForm extends React.Component {
                 </View>
             </View>
             <View>
-                <View style={{ backgroundColor: 'grey' }}>
+                <View>
                     <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Confirm Password</Text>
                 </View>
-                <View style={{ backgroundColor: 'brown' }}>
+                <View>
                     <Field
                         component={Input}
                         name="passwordConfirm"

@@ -9,8 +9,10 @@ class UserCreation extends React.Component {
     title: 'Creating Function Earth Account',
   };
   componentDidMount() {
+    
     this.props.dispatch(createUserStats())
       .then(() => {
+        console.log('HEY JAKE')
         if (this.props.loggedIn) {
           this.props.navigation.navigate('App')
         }

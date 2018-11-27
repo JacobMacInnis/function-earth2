@@ -48,12 +48,13 @@ export const registerUser = user => dispatch => {
         });
 };
 export const createUserStats = () => (dispatch, getState) => {
-  const REGISTRATIONToken = getState().REGISTRATION.REGISTRATIONToken;
+    console.log('I am in createUserStats action')
+    const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/users/stats`, {
       method: 'POST',
       headers: {
           'content-type': 'application/json',
-          REGISTRATIONorization: `Bearer ${REGISTRATIONToken}`
+          Authorization: `Bearer ${authToken}`
       },
       // body: JSON.stringify({username})
   })
